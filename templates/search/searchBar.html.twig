@@ -1,0 +1,36 @@
+<h1>Recherche d'établissement</h1>
+
+{{ form(form) }}
+
+{% if result %}
+
+  {% for type in result %}
+    {% if type %}
+      {% if type[0]['type'] == "apec" %}
+        <h2> Apec </h2>
+      {% else %}
+        <h2> Adil </h2>
+      {% endif %}      
+    {% endif %}
+    
+    {% for item in type %}
+      <h3>{{ item['nom'] }}</h3>
+      <ul>
+        <li><strong>Code Postal:</strong> {{ item['code_postal'] }}</li>
+        <li><strong>Commune:</strong> {{ item['commune'] }}</li>
+        <li><strong>Email:</strong> {{ item['email'] }}</li>
+        <li><strong>Telephone:</strong> {{ item['telephone'] }}</li>
+      </ul>
+    {% endfor %}
+    
+  {% endfor %}
+
+{% else %}
+
+  <p>Résultat introuvable</p>
+
+{% endif %}
+
+
+
+
